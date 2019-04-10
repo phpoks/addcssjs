@@ -1,0 +1,31 @@
+@media screen and (min-width : 767px){
+    #_tmp_select_add + .layui-form-select dl dd {
+        border: 1px solid #d1c3c3;
+        margin: 3px;
+        float: left;
+        border-radius: 3px;
+    }
+    #_tmp_select_add + .layui-form-select dl {
+       max-height: 550px;
+       width: 900px;
+    }
+
+    /* 所有input的间距 */
+    body .layui-form-item {
+        margin-bottom: 5px;
+    }
+
+    /* 全选 全不选 */
+    body .mtop { 
+        margin-top: 0;
+        min-height: 25px;
+    }
+
+    .layout li select,.layout select {
+    	border-radius: 0 2px 2px 0;
+        height: 30px;
+    }
+    dd[lay-value=thumb],dd[lay-value=subtitle],dd[lay-value=title2],dd[lay-value=note]{
+        background: #c3b7ef24
+    }
+}
