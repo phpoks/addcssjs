@@ -11,16 +11,23 @@ class admin_addcssjs extends phpok_plugin
 {
 	public $me;
 	public $path = '';
+	public $sessionplus = '';
 	public function __construct()
 	{
 		parent::plugin();
 		$this->me = $this->_info();
+		$this->sessionplus = $_SESSION['adm_develop'];
 		$this->path = $this->config['url'].'plugins/addcssjs/template/';
 	}
 
 	//后台首页
 	public function html_index_index_head(){
 		$css = ['addIndexCss.css'];
+
+		// 开发模式才启用css更改
+		if ($this->sessionplus) {
+			$css = ['addIndexCss.css','css/hideSidebars.css'];
+		}
 		$js = ['addIndexJs.js'];
 		foreach ($js as $key => $value) {
 			echo '	<script type="text/javascript" src="'.$this->path.$value.'"></script>'."\n";
@@ -48,6 +55,17 @@ class admin_addcssjs extends phpok_plugin
 		}
 	}
 
+	public function Js($js){
+		$is = is_file($this->path.$js);
+		if ($is) {
+			echo '<script type="text/javascript" src="'.$this->path.$js.'"></script>'."\n";
+		} else{
+			echo '<script type="text/javascript" src="'.$this->path.'js/'.$js.'"></script>'."\n";
+		}
+		
+	}
+
+
 	public function addOpacity(){
 		$js = ['addOpacity.js'];
 		foreach ($js as $key => $value) {
@@ -57,6 +75,10 @@ class admin_addcssjs extends phpok_plugin
 
 	public function addCss(){
 		$css = ['layuiAdd.css'];
+		if ($this->me['param'] && $this->me['param']['notebook'] == '1') {
+			$css = ['layuiAdd.css','notebook.css'];
+		}
+
 		foreach ($css as $key => $value) {
 			echo '	<link rel="stylesheet" href="'.$this->path.$value.'" media="all">'."\n";
 		}
@@ -86,10 +108,23 @@ class admin_addcssjs extends phpok_plugin
 		$this->addCssJs();
 	}
 
+	//列表内容添加
+	public function html_list_edit_head()
+	{
+	    $this->Js('list_edit.js');
+	}
+
 	public function html_cate_index_head()
 	{
 	    $this->addCssJs();
 	}
+
+	public function html_cate_set_head()
+	{
+	    $this->Js('cate_set.js');
+	}
+
+
 
 	public function html_all_set_head()
 	{
@@ -101,6 +136,7 @@ class admin_addcssjs extends phpok_plugin
 	    $this->addJs();
 	}
 
+	
 
 
 	/**
