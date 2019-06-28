@@ -89,6 +89,10 @@ class admin_addcssjs extends phpok_plugin
 		$this->addCssJs();
 	}
 
+	public function html_project_content_head(){
+		$this->Js('project_content.js');
+	}
+
 	public function html_project_set_head(){
 		$this->addCssJs();
 	}
