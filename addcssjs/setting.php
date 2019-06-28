@@ -21,7 +21,7 @@ class setting_addcssjs extends phpok_plugin
 	**/
 	public function index()
 	{
-		//return $this->_tpl('setting.html');
+		return $this->_tpl('setting.html');
 	}
 	
 	/**
@@ -29,10 +29,10 @@ class setting_addcssjs extends phpok_plugin
 	**/
 	public function save()
 	{
-		//$id = $this->_id();
-		//$ext = array();
-		//$ext['扩展参数字段名'] = $this->get('表单字段名');
-		//$this->_save($ext,$id);
+		$id = $this->_id();
+		$ext = array();
+		$ext['notebook'] = $this->get('notebook');
+		$this->_save($ext,$id);
 	}
 	
 	/**

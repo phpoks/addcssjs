@@ -1,6 +1,7 @@
 window.onload = function () {
 	var select=document.getElementById('_tmp_select_add');
 	var tbody=document.querySelector('tbody');
+	$(".layui-table").attr('lay-even','');
 
 	if (tbody) {
 		var len = tbody.children.length;
@@ -46,6 +47,12 @@ window.onload = function () {
 	
 
 	var f =url.search('f=set');
+	var m =url.search('c=module');
+	
+	/*if (m!==-1) {
+		$(".layui-btn-group").find('input[value="复制模块"]').hide();
+		$(".layui-btn-group").find('input[value="导出"]').hide();
+	}*/
 	if (f!==-1) {
 		setTimeout(function(){
 

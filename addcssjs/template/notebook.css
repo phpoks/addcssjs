@@ -1,0 +1,35 @@
+/* --根据笔记本调整-- */
+body .layui-fluid {
+    padding: 0;
+}
+/* submit变小 */
+body div.submit-info > div > .layui-btn-lg{
+	height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    font-size: 12px;
+}
+
+body div.submit-info > div > .layui-btn-lg{
+	height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    font-size: 12px;
+}
+#post_save > div > div.layui-card-body > div:nth-child(2) > div > div.layui-col-md10{
+	width: 90%;
+    float: left;
+}
+#post_save > div > div.layui-card-body > div:nth-child(2) > div > div.layui-col-md1{
+	float: left;
+}
+
+body .layui-table td,.layui-table th {
+    font-size: 12px;
+    padding: 5px 10px
+}
+
+body .layui-table-view .layui-table .layui-table-cell {
+    height: 20px;
+    line-height: 20px
+}
