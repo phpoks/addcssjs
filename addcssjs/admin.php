@@ -38,14 +38,14 @@ class admin_addcssjs extends phpok_plugin
 	}
 
 	public function addCssJs(){
-		$css = ['layuiAdd.css'];
+		// $css = ['layuiAdd.css'];
 		$js = ['layuiAdd.js'];
 		foreach ($js as $key => $value) {
 			echo '<script type="text/javascript" src="'.$this->path.$value.'"></script>'."\n";
 		}
-		foreach ($css as $key => $value) {
-			echo '	<link rel="stylesheet" href="'.$this->path.$value.'" media="all">'."\n";
-		}
+		// foreach ($css as $key => $value) {
+		// 	echo '	<link rel="stylesheet" href="'.$this->path.$value.'" media="all">'."\n";
+		// }
 	}
 
 	public function addJs(){
@@ -55,7 +55,7 @@ class admin_addcssjs extends phpok_plugin
 		}
 	}
 
-	public function Js($js){
+	public function js($js){
 		$is = is_file($this->path.$js);
 		if ($is) {
 			echo '<script type="text/javascript" src="'.$this->path.$js.'"></script>'."\n";
@@ -65,6 +65,15 @@ class admin_addcssjs extends phpok_plugin
 		
 	}
 
+	public function css($css){
+
+		$is = is_file($this->path.$css);
+		if ($is) {
+			echo '	<link rel="stylesheet" href="'.$this->path.$css.'" media="all">'."\n";
+		} else{
+			echo '	<link rel="stylesheet" href="'.$this->path.'css/'.$css.'" media="all">'."\n";
+		}
+	}
 
 	public function addOpacity(){
 		$js = ['addOpacity.js'];
@@ -83,6 +92,9 @@ class admin_addcssjs extends phpok_plugin
 			echo '	<link rel="stylesheet" href="'.$this->path.$value.'" media="all">'."\n";
 		}
 	}
+	
+
+
 
 	//项目页面
 	public function html_project_index_head(){
@@ -90,7 +102,7 @@ class admin_addcssjs extends phpok_plugin
 	}
 
 	public function html_project_content_head(){
-		$this->Js('project_content.js');
+		$this->js('project_content.js');
 	}
 
 	public function html_project_set_head(){
@@ -115,7 +127,7 @@ class admin_addcssjs extends phpok_plugin
 	//列表内容添加
 	public function html_list_edit_head()
 	{
-	    $this->Js('list_edit.js');
+	    $this->js('list_edit.js');
 	}
 
 	public function html_cate_index_head()
@@ -125,9 +137,8 @@ class admin_addcssjs extends phpok_plugin
 
 	public function html_cate_set_head()
 	{
-	    $this->Js('cate_set.js');
+	    $this->js('cate_set.js');
 	}
-
 
 
 	public function html_all_set_head()
@@ -140,7 +151,11 @@ class admin_addcssjs extends phpok_plugin
 	    $this->addJs();
 	}
 
-	
+	public function html_user_field_edit_head()
+	{
+	    $this->css('user_field_edit.css');
+	}
+
 
 
 	/**

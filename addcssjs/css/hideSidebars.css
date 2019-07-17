@@ -1,0 +1,7 @@
+/* --左侧栏目隐藏-- */
+/*body .layui-nav li[data-name="list"]{
+	display: none;
+}*/
+body .layui-nav li[data-name="all"]{
+	display: none;
+}
