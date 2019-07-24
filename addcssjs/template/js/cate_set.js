@@ -18,3 +18,19 @@
 	// 	                  //要做的事情
 	// 	             }
 	// 	         }; 
+
+/* project_content里的点击字段自动添加功能 (有改动) */
+/*<?php echo 1; ?>*/
+$(function(){
+	setTimeout(function(){
+		var dl = $("#_tmp_select_add").next().find('dl');
+		var dd = dl.find('dd');
+		dd.each(function(index,item){
+			$(this).click(function(){
+				setTimeout(function(){
+					$('input[value="快速添加"]').click()
+				},20)
+			})
+		})
+	},200)
+})
