@@ -17,7 +17,7 @@ class admin_addcssjs extends phpok_plugin
 		parent::plugin();
 		$this->me = $this->_info();
 		$this->sessionplus = $_SESSION['adm_develop'];
-		$this->path = $this->config['url'].'plugins/addcssjs/template/';
+		$this->path = $this->config['url'].'plugins/'.$this->me['id'].'/template/';
 	}
 
 	//后台首页
@@ -62,7 +62,10 @@ class admin_addcssjs extends phpok_plugin
 		} else{
 			echo '<script type="text/javascript" src="'.$this->path.'js/'.$js.'"></script>'."\n";
 		}
-		
+	}
+
+	public function jsIn($js){
+		echo '<script type="text/javascript" src="'.$this->path.'js/ext/'.$js.'"></script>'."\n";
 	}
 
 	public function css($css){
@@ -93,9 +96,6 @@ class admin_addcssjs extends phpok_plugin
 		}
 	}
 	
-
-
-
 	//项目页面
 	public function html_project_index_head(){
 		$this->addCssJs();
@@ -138,6 +138,10 @@ class admin_addcssjs extends phpok_plugin
 	public function html_cate_set_head()
 	{
 	    $this->js('cate_set.js');
+	    /* 以下为自动在分类下添加扩展字段 不使用可以注释,后面做成配置可选按钮模式 */
+	    $this->jsIn('banner.js');
+	    $this->jsIn('thumb.js');
+	    $this->jsIn('subtitle.js');
 	}
 
 
