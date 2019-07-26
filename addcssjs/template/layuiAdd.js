@@ -1,6 +1,50 @@
 window.onload = function () {
 	var select=document.getElementById('_tmp_select_add');
 	var tbody=document.querySelector('tbody');
+
+	/*
+	自己写的 获取标签选中的当前索引位置
+	var tags = top.$('#LAY_app_tabsheader');
+	var tagList = tags.find('li'); 
+	var thisList;
+	tagList.each(function(index,item){
+		if ($(this).hasClass('layui-this')) {
+			num = index;
+			thisList = $(this);
+		}
+	})
+	var num = 0; //layui-this 的位置
+	*/
+
+	var admin = window.parent.layui.admin;
+	var events = window.parent.layui.admin.events;
+	var numm = window.parent.layui.admin.tabsPage.index; //layui-this 的位置
+	// events.refresh();
+	// admin.closeThisTabs()
+
+	// window.parent 指的是当前框架的父亲窗口, 当前刚好为顶级窗口 window
+	// top 指的是顶级窗口 window
+	setTimeout(function(){
+		top.$('.layadmin-iframe').eq(numm)[0].contentWindow.focus()
+	},200)
+	var keyEvent = (function () {
+		document.onkeydown = function (e) {
+			var keyCode = e.keyCode || e.which || e.charCode;
+			var altKey = e.altKey;
+			if (altKey && keyCode === 82) { 
+				//原生写法,phpok写的
+				// top.$('.layadmin-iframe').eq(numm)[0].contentWindow.location.reload(true); 
+				events.refresh()
+			}
+			
+			if (altKey && keyCode === 87) { 
+				// thisList.find('.layui-tab-close')[0].click() 自己写的方法
+				admin.closeThisTabs()
+			}
+
+		}
+	})();
+
 	$(".layui-table").attr('lay-even','');
 
 	if (tbody) {
