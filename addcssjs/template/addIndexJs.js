@@ -6,4 +6,7 @@ $(function(){
 	i.after('<div class="layui-icon layadmin-tabs-control layui-icon-template" layadmin-event="closeOtherTabs" title="关闭其他标签"></div>')
 
 	$("li[data-name='group-1']").addClass('layui-nav-itemed'); //默认展开设置项
+	setTimeout(function(){
+		$("li[data-name='list']").find('a').trigger('click'); //默认打开插件首页
+	},200)
 })
