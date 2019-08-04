@@ -32,6 +32,8 @@ class setting_addcssjs extends phpok_plugin
 		$id = $this->_id();
 		$ext = array();
 		$ext['notebook'] = $this->get('notebook');
+		$ext['linecolor'] = $this->get('linecolor');
+		$ext['linebool'] = $this->get('linebool');
 		$this->_save($ext,$id);
 	}
 	

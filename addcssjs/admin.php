@@ -43,6 +43,7 @@ class admin_addcssjs extends phpok_plugin
 		foreach ($js as $key => $value) {
 			echo '<script type="text/javascript" src="'.$this->path.$value.'"></script>'."\n";
 		}
+		echo '<script type="text/javascript">var linecolor ="'.$this->me['param']['linecolor'].'";</script>'."\n";
 		// foreach ($css as $key => $value) {
 		// 	echo '	<link rel="stylesheet" href="'.$this->path.$value.'" media="all">'."\n";
 		// }
@@ -139,9 +140,9 @@ class admin_addcssjs extends phpok_plugin
 	{
 	    $this->js('cate_set.js');
 	    /* 以下为自动在分类下添加扩展字段 不使用可以注释,后面做成配置可选按钮模式 */
-	    $this->jsIn('banner.js');
-	    $this->jsIn('thumb.js');
-	    $this->jsIn('subtitle.js');
+	    // $this->jsIn('banner.js');
+	    // $this->jsIn('thumb.js');
+	    // $this->jsIn('subtitle.js');
 	}
 
 

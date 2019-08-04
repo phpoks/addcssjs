@@ -20,7 +20,7 @@
 	// 	         }; 
 
 /* project_content里的点击字段自动添加功能 (有改动) */
-/*<?php echo 1; ?>*/
+
 $(function(){
 	setTimeout(function(){
 		var dl = $("#_tmp_select_add").next().find('dl');
@@ -32,5 +32,8 @@ $(function(){
 				},20)
 			})
 		})
-	},200)
+		/* 自动判断有没有banner字段,没有则自动创建 */
+		/* js/ext/banner.js */
+	},200);
+
 })

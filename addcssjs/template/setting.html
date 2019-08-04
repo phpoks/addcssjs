@@ -1,2 +1,84 @@
-<label><input type="radio" name="notebook" id="notebook1" value="1" {if $rs.param.notebook==1}checked{/if}>开启笔记本缩小样式</label>
-<label><input type="radio" name="notebook" id="notebook2" value="0" {if $rs.param.notebook==0}checked{/if}>关闭笔记本缩小样式</label>
+
+<div class="tips help">
+	<p>功能选择</p>
+	<!-- <p>有道云提供中文翻译成英文的接口</p> -->
+</div>
+<div class="table">
+	<div class="title">
+		开启笔记本缩小样式 <span class="note">默认关闭</span>
+	</div>
+	<div class="content">
+		<ul class="layout">
+			<!-- if $rs.param && $rs.param.notebook -->
+			<li><label><input type="radio" name="notebook" id="notebook2" value="0" {if $rs.param.notebook==0}checked{/if}>禁用</label></li>
+			<li><label><input type="radio" name="notebook" id="notebook1" value="1" {if $rs.param.notebook==1}checked{/if}></label>启用</li>
+			<!-- else -->
+			<li><label><input type="radio" name="notebook" value="0" checked />禁用</label></li>
+			<li><label><input type="radio" name="notebook" value="1"/>启用</label></li>
+			<!-- /if -->
+		</ul>
+	</div>
+</div>
+<div class="table">
+	<div class="title">
+		点击TR行颜色 <span class="note">默认启用</span>
+	</div>
+
+			<div class="content" id="linecolorPar" style="display: none;">
+					<script type="text/javascript" src="js/jscolor/jscolor.js?_noCache=1564892091" charset="utf-8"></script>
+					<input type="hidden" id="id" value="style" />
+					<input type="hidden" id="vid" value="title" />
+					<div class="layui-card">
+						<input type="hidden" name="content" id="content" />
+						<div class="layui-card-body layui-form">
+
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<ul class="layout">
+										<li><input type="text" id="linecolor" class="layui-input inp inp_color" name="linecolor" style="width:100px" value="{$rs.param.linecolor}" /></li>
+										<li><input type="button" value=" " id="preview_color_color" style="width:30px;height:30px;border:0;margin:0;padding:0;display:block;" /></li>
+										<li style="margin-top:3px;">
+											<div class="layui-btn-group">
+												<input type="button" value="颜色选择" class="layui-btn layui-btn-sm jscolor {valueElement:'linecolor', styleElement:'preview_color_color',required:false,hash:true}" />
+												<input type="button" value="清除" class="layui-btn layui-btn-sm layui-btn-warm" onclick="$.phpokform.clear('linecolor')" />
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<script type="text/javascript">
+					$(document).ready(function(){
+						/*if(layui && layui != 'undefined' && layui.form){
+							window.setTimeout(function(){
+								layui.form.render();
+							}, 500);
+						}*/
+						$('input[name="linebool"]').click(function(){
+							if ($(this).val()==1) {
+								$("#linecolorPar").show()
+							} else if ($(this).val()==0) {
+								$("#linecolorPar").hide()
+							}
+						})
+					});
+				</script>
+			<!-- if $rs.param && $rs.param.linebool -->
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$("#linecolorPar").show()
+				});
+			</script>
+
+			<ul class="layout" style="margin-left: 3px;">
+				<li><label><input type="radio" name="linebool" value="0"/>禁用</label></li>
+				<li><label><input type="radio" name="linebool" value="1"{if $rs.param.linebool} checked{/if} />启用</label></li>
+				<!-- else -->
+				<label><input type="radio" name="linebool" value="0" checked=checked/>禁用</label>
+				<label><input type="radio" name="linebool" value="1"/>启用</label>
+				<!-- /if -->
+			</ul>
+	</div>
+</div>

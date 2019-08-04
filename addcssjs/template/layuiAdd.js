@@ -1,9 +1,8 @@
 window.onload = function () {
 	var select=document.getElementById('_tmp_select_add');
-	var tbody=document.querySelector('tbody');
 
 	/*
-	自己写的 获取标签选中的当前索引位置
+	自己写的 获取框架标签选中的当前索引位置
 	*/
 	var tags = top.$('#LAY_app_tabsheader');
 	var tagList = tags.find('li'); 
@@ -52,35 +51,54 @@ window.onload = function () {
 		}
 	})();
 
-	$(".layui-table").attr('lay-even','');
+	var lineColor = linecolor; //本功能主要显示颜色
+	if (lineColor) {
+		$(".layui-table").attr('lay-even','');
+		var tbody=document.querySelector('tbody');
+		var even,_this;
+		if (tbody) {
+			var len = tbody.children.length;
+			for (var i = len - 1; i >= 0; i--) {
 
-	if (tbody) {
-		var len = tbody.children.length;
-		for (var i = len - 1; i >= 0; i--) {
-
-			tbody.children[i].onmouseover=function()
-			{
-				this.style.backgroundColor='#f2f2f2';
-				this.onmouseout=function()
+				tbody.children[i].onmouseover=function()
 				{
+					even = document.querySelectorAll('.layui-table[lay-even] tr:nth-child(even)');
+
 					var c = this.style.backgroundColor;
-					if (c=='#FFCC80' || c=='rgb(255, 204, 128)') {
-						this.style.backgroundColor='#FFCC80';
-					}else {
-						this.style.backgroundColor='';
+					even.forEach(function(item,index){
+						// item.style.backgroundColor='#f2f2f2';
+					})
+					
+					// this.style.backgroundColor='#f2f2f2';
+
+					this.onmouseout=function()
+					{
+						if (c=='#FFCC80' || c=='rgb(255, 204, 128)') {
+							// this.style.backgroundColor='#FFCC80';
+						}else {
+							// this.style.backgroundColor='';
+						}
 					}
 				}
-			}
 
-			tbody.children[i].onclick = function(){
-				for (var y = len - 1; y >= 0; y--) {
-					tbody.children[y].style.backgroundColor = '#fff';
+				tbody.children[i].onclick = function(){
+					for (var y = len - 1; y >= 0; y--) {
+						if (y%2==0) {
+							tbody.children[y].style.backgroundColor = '#fff';
+						}
+						if (y%2!=0) {
+							tbody.children[y].style.backgroundColor = '#f2f2f2';
+
+						}
+					}
+					this.style.backgroundColor = lineColor;
 				}
-				this.style.backgroundColor = "#FFCC80"
+				
 			}
-			
 		}
 	}
+
+
 	if (select) {
 		select.parentNode.style.width = '600px';
 	}
