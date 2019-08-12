@@ -1,0 +1,18 @@
+/* 修改字段弹窗单列变为双列 */
+/* 需先在 framework\js下找到admin.user.js并复制到js下,之后修改 field_edit方法内artdialog设置的宽高 */
+/* 
+"width" : "1300px",
+"height" : "52%",
+ */
+@media (min-width: 1110px) {
+	#post_save>.table,#form_save>.table {
+		display: inline-block;
+		width: 46.5%;
+		margin-left: 1%;
+	}
+	#form_type_ext {
+		width: 49.2%;
+		margin-left: .6%;
+		float: left;
+	}
+}

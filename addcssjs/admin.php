@@ -156,6 +156,15 @@ class admin_addcssjs extends phpok_plugin
 	    $this->addJs();
 	}
 
+	public function html_module_fields_head()
+	{
+	    $this->js('field_edit.js');
+	}
+	public function html_module_field_edit_head()
+	{
+	    $this->css('user_field_edit.css');
+	}
+
 	public function html_user_field_edit_head()
 	{
 	    $this->css('user_field_edit.css');
