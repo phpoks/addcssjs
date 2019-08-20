@@ -140,9 +140,9 @@ class admin_addcssjs extends phpok_plugin
 	{
 	    $this->js('cate_set.js');
 	    /* 以下为自动在分类下添加扩展字段 不使用可以注释,后面做成配置可选按钮模式 */
-	    // $this->jsIn('banner.js');
-	    // $this->jsIn('thumb.js');
-	    // $this->jsIn('subtitle.js');
+	    if ($this->me['param']['isfields'] && $this->me['param']['isfields']['banner']) $this->jsIn('banner.js');
+	    if ($this->me['param']['isfields'] && $this->me['param']['isfields']['thumb']) $this->jsIn('thumb.js');
+	    if ($this->me['param']['isfields'] && $this->me['param']['isfields']['subtitle']) $this->jsIn('subtitle.js');
 	}
 
 
@@ -154,6 +154,7 @@ class admin_addcssjs extends phpok_plugin
 	public function html_module_index_head()
 	{
 	    $this->addJs();
+		$this->addCssJs();
 	}
 
 	public function html_module_fields_head()

@@ -81,4 +81,24 @@
 				<!-- /if -->
 			</ul>
 	</div>
+<div class="table">
+    <div class="title">
+        扩展字段自动添加字段选项 <span class="note" id="check_all_isfields">全选</span>
+    </div>
+    <div class="content">
+        <ul class="layout">
+            <li><label><input type="checkbox" class="isfields" name="isfields[banner]" value="1" {if $rs.param.isfields && $rs.param.isfields[banner]}checked{/if}>banner</label></li>
+            <li><label><input type="checkbox" class="isfields" name="isfields[thumb]" value="1" {if $rs.param.isfields && $rs.param.isfields[thumb]}checked{/if}>thumb</label></li>
+            <li><label><input type="checkbox" class="isfields" name="isfields[subtitle]" value="1" {if $rs.param.isfields && $rs.param.isfields[subtitle]}checked{/if}>subtitle</label></li>
+        </ul>
+    </div>
 </div>
+	<script>
+		$("#check_all_isfields").click(function(){
+			if ($('.isfields').is(':checked')) {
+				$('.isfields').prop('checked',false);
+			} else {
+				$('.isfields').prop('checked',true);
+			}
+		})
+	</script>
