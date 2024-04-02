@@ -5,7 +5,7 @@
  * @作者 phpok.com
  * @版本 5.2.031
  * @授权 http://www.phpok.com/lgpl.html PHPOK开源授权协议：GNU Lesser General Public License
- * @时间 2019年04月01日 23时33分
+ * @时间 2019年04月01日 23时33分 2024年4月2日10:11:48
 **/
 class www_addcssjs extends phpok_plugin
 {
